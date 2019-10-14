@@ -235,7 +235,7 @@
     <origin xyz="${.707*width+0.04} 0 ${.707*width}"/>
   </joint>
 
-  <link name="lens">
+  <link name="lense">
     <visual>
       <geometry>
         <cylinder radius="0.035" length="0.01"/>
@@ -251,10 +251,27 @@
     <xacro:default_inertial mass="1"/>
   </link>
 
-<joint name="tolens" type="fixed">
+<joint name="tolense" type="fixed">
     <parent link="box"/>
-    <child link="lens"/>
+    <child link="lense"/>
     <origin xyz="0 0 0"/>
+  </joint>
+
+
+<link name="eye">
+<visual>
+<geometry>
+        <box size="0.0001 0.0001 0.0001"/>
+      </geometry>
+      <material name="black"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </visual>
+</link>
+
+<joint name="toeye" type="fixed">
+    <parent link="lense"/>
+    <child link="eye"/>
+    <origin rpy="-1.5708 0 -1.5708" xyz="0 0 0"/>
   </joint>
 
   <link name="base_footprint">
